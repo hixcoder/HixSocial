@@ -1,13 +1,16 @@
+const baseUrl = "https://tarmeezacademy.com/api/v1";
+
+// this function for fetch all posts
 async function fetchPosts() {
   await new Promise((resolve, reject) => {
     axios
-      .get("https://tarmeezacademy.com/api/v1/posts?limit=60")
+      .get(`${baseUrl}/posts?limit=60`)
       .then((response) => {
         let allPosts = response.data.data;
         var i = 0;
         var postList = [];
         for (post of allPosts) {
-          console.log(post);
+          // console.log(post);
           postList.push(
             new Post(
               post.author.name,
@@ -52,3 +55,22 @@ async function fetchPosts() {
   });
 }
 fetchPosts();
+
+// this function for fetch all posts
+function login(userName, password, onFinish) {
+  params = {
+    username: userName,
+    password: password,
+  };
+  axios
+    .post(`${baseUrl}/login`, params)
+    .then(function (response) {
+      console.log(response.data);
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      onFinish();
+    })
+    .catch(function (error) {
+      console.log(error.response.data.message);
+    });
+}

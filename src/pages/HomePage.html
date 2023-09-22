@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/homePage.css" />
+    <link rel="stylesheet" href="../styles/loginModal.css" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v6.0.0-beta1/css/all.css"
@@ -11,6 +12,35 @@
     <title>Social media</title>
   </head>
   <body>
+    <!-- MODALS -->
+    <!-- LOGIN -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>Login Now</h1>
+        <form action="#">
+          <input
+            id="userName-input"
+            type="text"
+            placeholder="Your Username"
+            required
+          />
+          <input
+            id="password-input"
+            type="password"
+            placeholder="Your Password"
+            required
+          />
+          <button type="submit" onclick="loginBtnClicked()">login</button>
+          <div class="signup-link">
+            Not a member? <a href="#">Register now</a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- /LOGIN -->
+    <!-- /MODALS -->
+
     <div class="container">
       <!-- NAV BAR -->
       <div class="nav">
@@ -30,15 +60,15 @@
           <a href="#" class="navlink navlink-left">Profile</a>
         </div>
         <div class="nav-right">
-          <a href="#" class="navlink navlink-right">Login</a>
-          <a href="#" class="navlink navlink-right">Register</a>
+          <button onclick="loginBtnClicked()" id="btn-login" class="navlink navlink-right">Login</a>
+          <button  id="btn-register" class="navlink navlink-right">Register</a>
+          <button onclick="logoutBtnClicked()"  id="btn-logout" class="navlink navlink-right">Logout</a>
         </div>
       </div>
       <!-- /NAV BAR -->
 
       <!-- POST CARD -->
       <div id="posts-container"></div>
-
       <!-- /POST CARD -->
     </div>
     <script src="../../node_modules/axios/dist/axios.min.js"></script>

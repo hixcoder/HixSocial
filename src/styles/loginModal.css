@@ -1,0 +1,79 @@
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  border-radius: 0.8rem;
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 0.8rem 1.5rem;
+  width: 22rem; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content h1 {
+  text-align: center;
+  width: 100%;
+  margin: 2rem auto 1rem auto;
+  padding: 0.4rem;
+}
+
+.modal-content form input {
+  margin: 0 0 0.8rem 0;
+  height: 2rem;
+  padding: 0.4rem;
+}
+
+.modal-content form a {
+  margin: 0 0 1rem 0;
+  text-decoration: none;
+  color: var(--main-color);
+}
+
+.modal-content form button {
+  cursor: pointer;
+  margin: 0.4rem 0 1rem 0;
+  background-color: var(--main-color);
+  color: white;
+  font-size: 1rem;
+  padding: 1rem;
+  border: none;
+}
+
+.modal-content form button:hover {
+  background-color: var(--main-color-dark);
+}
+
+.signup-link {
+  margin: 0 auto 1rem auto;
+}
