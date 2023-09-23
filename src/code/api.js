@@ -4,7 +4,7 @@ const baseUrl = "https://tarmeezacademy.com/api/v1";
 async function fetchPosts() {
   await new Promise((resolve, reject) => {
     axios
-      .get(`${baseUrl}/posts?limit=60`)
+      .get(`${baseUrl}/tags/1/posts`)
       .then((response) => {
         let allPosts = response.data.data;
         var i = 0;
@@ -18,13 +18,19 @@ async function fetchPosts() {
               post.createdAt,
               post.title,
               post.body,
-              post.image
+              post.image,
+              post.tags
             )
           );
+          if (i == 0) {
+            console.log(postList[0].tags[0].name);
+          }
           document.getElementById("posts-container").innerHTML += `
           <div class="post">
             <div class="post-head">
-              <img id="post-publisher-img" src="${postList[i].authorImage}" alt="" onerror="this.onerror=null;this.src='../assets/male.png';"/>
+              <img id="post-publisher-img" src="${
+                postList[i].authorImage
+              }" alt="" onerror="this.onerror=null;this.src='../assets/male.png';"/>
               <div class="post-head-info">
                 <h3>${postList[i].author}</h3>
                 <p>${postList[i].createdAt}</p>
@@ -40,8 +46,14 @@ async function fetchPosts() {
               <img id="post-img" src="${postList[i].image}" alt="" />
             </div>
             <div class="post-footer">
-              <i class="fa-regular fa-message"></i>
-              <h4>comment</h4>
+               <div class="tags">
+               ${getTags(postList[i].tags)}
+                </div>
+                <div class="comment">
+                    <i class="fa-regular fa-message"></i>
+                    <h4>comment</h4>
+              </div>
+            </div>
             </div>
           </div>
          `;
@@ -51,6 +63,7 @@ async function fetchPosts() {
       })
       .catch((error) => {
         alert(error);
+        console.log(error);
       });
   });
 }
@@ -73,4 +86,20 @@ function login(userName, password, onFinish) {
     .catch(function (error) {
       console.log(error.response.data.message);
     });
+}
+
+// this function for get the post tags
+function getTags(tags) {
+  tagsHtml = "";
+  if (!Array.isArray(tags) || tags.length === 0) {
+    // console.log(tags);
+    console.log("getTags error");
+
+    return tagsHtml;
+  }
+  for (let i = 0; i < tags.length; i++) {
+    tagsHtml += `<h5>${tags[i].name}</h5>`;
+  }
+  // console.log(tagsHtml);
+  return tagsHtml;
 }

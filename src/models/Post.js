@@ -5,7 +5,8 @@ class Post {
     createdAt = "",
     title = "",
     body = "",
-    image = ""
+    image = "",
+    tags = []
   ) {
     this.author = author;
     this.authorImage = authorImage;
@@ -13,5 +14,6 @@ class Post {
     this.title = title ?? "";
     this.body = body ?? "";
     this.image = image;
+    this.tags = tags;
   }
 }
