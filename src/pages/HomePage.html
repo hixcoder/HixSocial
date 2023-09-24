@@ -14,7 +14,7 @@
   <body>
     <!-- MODALS -->
     <!-- LOGIN -->
-    <div id="myModal" class="modal">
+    <div id="loginModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
         <h1>Login Now</h1>
@@ -39,6 +39,44 @@
       </div>
     </div>
     <!-- /LOGIN -->
+        <!-- REGISTER -->
+    <div id="registerModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>Register Now</h1>
+        <form action="#">
+          <input
+            id="fullName-input-register"
+            type="text"
+            placeholder="Enter Full Name"
+            required
+          />
+           <input
+            id="userName-input-register"
+            type="text"
+            placeholder="Enter Username"
+            required
+          />
+            <input
+            id="email-input-register"
+            type="email"
+            placeholder="Enter Email"
+            required
+          />
+          <input
+            id="password-input-register"
+            type="password"
+            placeholder="Enter Password"
+            required
+          />
+          <button type="submit" onclick="registerBtnClicked()">Register</button>
+          <div class="signup-link">
+            Already have an account? <a href="#">Login</a>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- /REGISTER -->
     <!-- /MODALS -->
 
     <div class="container">
@@ -60,7 +98,7 @@
           <a href="#" class="navlink navlink-left">Profile</a>
         </div>
         <div class="nav-right">
-          <button onclick="loginBtnClicked()" id="btn-login" class="navlink navlink-right">Login</a>
+          <button id="btn-login" class="navlink navlink-right">Login</a>
           <button  id="btn-register" class="navlink navlink-right">Register</a>
           <button onclick="logoutBtnClicked()"  id="btn-logout" class="navlink navlink-right">Logout</a>
         </div>

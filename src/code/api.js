@@ -4,7 +4,7 @@ const baseUrl = "https://tarmeezacademy.com/api/v1";
 async function fetchPosts() {
   await new Promise((resolve, reject) => {
     axios
-      .get(`${baseUrl}/tags/1/posts`)
+      .get(`${baseUrl}/posts?limit=10`)
       .then((response) => {
         let allPosts = response.data.data;
         var i = 0;
@@ -22,9 +22,6 @@ async function fetchPosts() {
               post.tags
             )
           );
-          if (i == 0) {
-            console.log(postList[0].tags[0].name);
-          }
           document.getElementById("posts-container").innerHTML += `
           <div class="post">
             <div class="post-head">
@@ -69,7 +66,7 @@ async function fetchPosts() {
 }
 fetchPosts();
 
-// this function for fetch all posts
+// this function for login
 function login(userName, password, onFinish) {
   params = {
     username: userName,
@@ -77,6 +74,27 @@ function login(userName, password, onFinish) {
   };
   axios
     .post(`${baseUrl}/login`, params)
+    .then(function (response) {
+      console.log(response.data);
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      onFinish();
+    })
+    .catch(function (error) {
+      console.log(error.response.data.message);
+    });
+}
+
+// this function for register
+function register(fullName, userName, email, password, onFinish) {
+  params = {
+    name: fullName,
+    username: userName,
+    email: email,
+    password: password,
+  };
+  axios
+    .post(`${baseUrl}/register`, params)
     .then(function (response) {
       console.log(response.data);
       localStorage.setItem("token", response.data.token);
