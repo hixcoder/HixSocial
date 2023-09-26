@@ -15,7 +15,7 @@ async function fetchPosts() {
             new Post(
               post.author.name,
               post.author.profile_image,
-              post.createdAt,
+              post.created_at,
               post.title,
               post.body,
               post.image,
@@ -64,7 +64,6 @@ async function fetchPosts() {
       });
   });
 }
-fetchPosts();
 
 // this function for login
 function login(userName, password, onFinish) {
@@ -103,6 +102,7 @@ function register(fullName, userName, email, password, onFinish) {
     })
     .catch(function (error) {
       console.log(error.response.data.message);
+      // console.log(error.response);
     });
 }
 
@@ -111,7 +111,7 @@ function getTags(tags) {
   tagsHtml = "";
   if (!Array.isArray(tags) || tags.length === 0) {
     // console.log(tags);
-    console.log("getTags error");
+    // console.log("getTags error");
 
     return tagsHtml;
   }
@@ -121,3 +121,5 @@ function getTags(tags) {
   // console.log(tagsHtml);
   return tagsHtml;
 }
+
+fetchPosts();

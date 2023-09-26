@@ -1,24 +1,27 @@
 // ================ DRAWER ================
-const drawerCheckbox = document.getElementById("drawer");
-const drawerIcon = document.getElementById("drawer-icon");
-const nav = document.getElementsByClassName("nav");
-const navlink = document.getElementsByClassName("navlink");
 
-drawerCheckbox.addEventListener("change", () => {
-  drawerIcon.style.transition = "0.5s";
-  for (let i = 0; i < navlink.length; i++) {
-    if (drawerCheckbox.checked) {
-      navlink[i].style.marginTop = "-100%";
-      drawerIcon.className = "fa-solid fa-bars";
-      // nav[0].style.height = "0";
-    } else {
-      // nav[0].style.height = "100vh";
-      navlink[i].style.marginTop = "0";
-      navlink[i].style.transition = "0.5s";
-      drawerIcon.className = "fa-solid fa-x";
+function drawer() {
+  const drawerCheckbox = document.getElementById("drawer");
+  const drawerIcon = document.getElementById("drawer-icon");
+  const nav = document.getElementsByClassName("nav");
+  const navlink = document.getElementsByClassName("navlink");
+
+  drawerCheckbox.addEventListener("change", () => {
+    drawerIcon.style.transition = "0.5s";
+    for (let i = 0; i < navlink.length; i++) {
+      if (drawerCheckbox.checked) {
+        navlink[i].style.marginTop = "-100%";
+        drawerIcon.className = "fa-solid fa-bars";
+        // nav[0].style.height = "0";
+      } else {
+        // nav[0].style.height = "100vh";
+        navlink[i].style.marginTop = "0";
+        navlink[i].style.transition = "0.5s";
+        drawerIcon.className = "fa-solid fa-x";
+      }
     }
-  }
-});
+  });
+}
 // ================ /DRAWER ================
 
 // ================ Modals ================
@@ -85,24 +88,58 @@ function logoutBtnClicked() {
 // ================ /Modals ================
 
 // ================ SETUP UI ================
+var isLargeScreen = false;
+
+function pixelsToRem(pixels) {
+  const baseFontSize = parseFloat(
+    getComputedStyle(document.documentElement).fontSize
+  );
+  return pixels / baseFontSize;
+}
+
+// Define a function to handle the window resize event
+function handleResize() {
+  // Get the window width in pixels
+  const windowWidthPixels = window.innerWidth;
+
+  // Convert the window width to rems
+  const windowWidthRems = pixelsToRem(windowWidthPixels);
+
+  // console.log(`Window width: ${windowWidthRems}rem`);
+
+  // You can add your responsive code here
+  if (windowWidthRems <= 55) {
+    // Execute code for small screens (less than or equal to 55rem)
+    isLargeScreen = false;
+  } else {
+    // Execute code for larger screens
+    isLargeScreen = true;
+  }
+  setupUI();
+}
+
 function setupUI() {
   const token = localStorage.getItem("token");
   const loginBtn = document.getElementById("btn-login");
   const registerBtn = document.getElementById("btn-register");
   const logoutBtn = document.getElementById("btn-logout");
 
+  // console.log("isLargeScreen: " + isLargeScreen);
   if (token == "") {
     // user is not login [guest]
-    loginBtn.style.display = "inline-block";
-    registerBtn.style.display = "inline-block";
-    logoutBtn.style.display = "none";
+    loginBtn.style.display = isLargeScreen ? "inline-block" : "block";
+    registerBtn.style.display = isLargeScreen ? "inline-block" : "block";
+    logoutBtn.style.display = "none ";
   } else {
+    // user is login
     loginBtn.style.display = "none";
     registerBtn.style.display = "none";
-    logoutBtn.style.display = "inline-block";
-    // user is login
+    logoutBtn.style.display = isLargeScreen ? "inline-block" : "block";
   }
 }
 // ================ /SETUP UI ================
 
+drawer();
+handleResize();
+window.addEventListener("resize", handleResize);
 setupUI();

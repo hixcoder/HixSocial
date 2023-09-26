@@ -39,7 +39,7 @@
       </div>
     </div>
     <!-- /LOGIN -->
-        <!-- REGISTER -->
+    <!-- REGISTER -->
     <div id="registerModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
@@ -51,13 +51,13 @@
             placeholder="Enter Full Name"
             required
           />
-           <input
+          <input
             id="userName-input-register"
             type="text"
             placeholder="Enter Username"
             required
           />
-            <input
+          <input
             id="email-input-register"
             type="email"
             placeholder="Enter Email"
@@ -97,17 +97,26 @@
           <a href="#" class="navlink navlink-left">Home</a>
           <a href="#" class="navlink navlink-left">Profile</a>
         </div>
+
         <div class="nav-right">
-          <button id="btn-login" class="navlink navlink-right">Login</a>
-          <button  id="btn-register" class="navlink navlink-right">Register</a>
-          <button onclick="logoutBtnClicked()"  id="btn-logout" class="navlink navlink-right">Logout</a>
+          <button id="btn-login" class="navlink navlink-right">Login</button>
+          <button id="btn-register" class="navlink navlink-right">
+            Register
+          </button>
+          <button
+            onclick="logoutBtnClicked()"
+            id="btn-logout"
+            class="navlink navlink-right"
+          >
+            Logout
+          </button>
         </div>
       </div>
       <!-- /NAV BAR -->
 
       <!-- POST CARD -->
       <div id="posts-container">
-         <!-- <div class="post">
+        <!-- <div class="post">
             <div class="post-head">
               <img id="post-publisher-img" src="${postList[i].authorImage}" alt="" onerror="this.onerror=null;this.src='../assets/male.png';"/>
               <div class="post-head-info">
