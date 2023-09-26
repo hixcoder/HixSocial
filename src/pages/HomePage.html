@@ -116,37 +116,40 @@
 
       <!-- POST CARD -->
       <div id="posts-container">
-        <!-- <div class="post">
-            <div class="post-head">
-              <img id="post-publisher-img" src="${postList[i].authorImage}" alt="" onerror="this.onerror=null;this.src='../assets/male.png';"/>
-              <div class="post-head-info">
-                <h3>${postList[i].author}</h3>
-                <p>${postList[i].createdAt}</p>
-              </div>
-            </div>
+        <div id="create-post">
+          <div class="post-head">
+            <img
+              id="post-publisher-img"
+              src="${postList[i].authorImage}"
+              alt=""
+              onerror="this.onerror=null;this.src='../assets/male.png';"
+            />
+            <h3>${postList[i].author}</h3>
+          </div>
 
-            <div class="post-body">
-              <h3>
-                ${postList[i].title}
-              </h3>
-              <h4>
-                ${postList[i].body}
-              </h4>
-              <img id="post-img" src="../assets/bg.png" alt="" />
-            </div>
+          <form action="#">
+            <input
+              class="create-post-input"
+              id="create-post-title"
+              type="text"
+              placeholder="Enter title"
+              required
+            />
 
-            <div class="post-footer">
-                <div class="tags">
-                    <h5>comment</h5>
-                     <h5>comment</h5>
-                </div>
-                <hr>
-                <div class="comment">
-                    <i class="fa-regular fa-message"></i>
-                    <h4>comment</h4>
-              </div>
+            <textarea
+              class="create-post-input"
+              name=""
+              id="create-post-body"
+              cols="30"
+              rows="5"
+              placeholder="Enter description"
+            ></textarea>
+            <input id="create-post-img" type="file" required />
+            <div class="hix-align-right">
+              <button type="submit" onclick="">Publish</button>
             </div>
-          </div> -->
+          </form>
+        </div>
       </div>
       <!-- /POST CARD -->
     </div>
