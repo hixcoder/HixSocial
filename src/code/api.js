@@ -2,15 +2,19 @@ const baseUrl = "https://tarmeezacademy.com/api/v1";
 
 // this function for fetch all posts
 
-async function fetchPosts() {
+async function fetchPosts(reload = true, page = 1) {
   await new Promise((resolve, reject) => {
     axios
-      .get(`${baseUrl}/posts?limit=10`)
+      .get(`${baseUrl}/posts?limit=6&page=${page}`)
       .then((response) => {
         let allPosts = response.data.data;
         var i = 0;
         var postList = [];
-        document.getElementById("posts-container").innerHTML = "";
+        // console.log(response.data.meta.last_page);
+        lastPage = response.data.meta.last_page;
+        if (reload) {
+          document.getElementById("posts-container").innerHTML = "";
+        }
         for (post of allPosts) {
           // console.log(post);
           postList.push(
@@ -128,6 +132,7 @@ function getTags(tags) {
   return tagsHtml;
 }
 
+// this function for publish new posts
 function publishPost(postTitle, postDescription, postImg, onFinish) {
   const token = localStorage.getItem("token");
   let formData = new FormData();

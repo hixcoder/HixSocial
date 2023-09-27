@@ -185,6 +185,24 @@ function publishBtnClicked() {
 }
 // ================ /Create Post ================
 
+// ================ Infinite Scroll ================
+
+let currentPage = 1;
+let lastPage = 1; // this var is getting his value in the fetchPosts() function
+window.addEventListener("scroll", () => {
+  const endOfPage =
+    window.scrollY + window.innerHeight >=
+    document.documentElement.scrollHeight;
+  if (endOfPage && currentPage <= lastPage) {
+    // console.log("endOfPage: " + endOfPage);
+    // console.log("currentPage: " + currentPage);
+    // console.log("lastPage: " + lastPage);
+    fetchPosts(false, currentPage);
+    currentPage++;
+  }
+});
+// ================ /Infinite Scroll ================
+
 drawer();
 handleResize();
 window.addEventListener("resize", handleResize);
