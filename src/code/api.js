@@ -1,6 +1,7 @@
 const baseUrl = "https://tarmeezacademy.com/api/v1";
 
 // this function for fetch all posts
+
 async function fetchPosts() {
   await new Promise((resolve, reject) => {
     axios
@@ -9,6 +10,7 @@ async function fetchPosts() {
         let allPosts = response.data.data;
         var i = 0;
         var postList = [];
+        document.getElementById("posts-container").innerHTML = "";
         for (post of allPosts) {
           // console.log(post);
           postList.push(
@@ -77,6 +79,7 @@ function login(userName, password, onFinish) {
       console.log(response.data);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", JSON.stringify(response.data.user));
+
       onFinish();
     })
     .catch(function (error) {
@@ -85,15 +88,18 @@ function login(userName, password, onFinish) {
 }
 
 // this function for register
-function register(fullName, userName, email, password, onFinish) {
-  params = {
-    name: fullName,
-    username: userName,
-    email: email,
-    password: password,
+function register(fullName, userName, email, password, registerImg, onFinish) {
+  let formData = new FormData();
+  formData.append("name", fullName);
+  formData.append("username", userName);
+  formData.append("email", email);
+  formData.append("password", password);
+  formData.append("image", registerImg);
+  const headers = {
+    "Content-Type": "multipart/form-data",
   };
   axios
-    .post(`${baseUrl}/register`, params)
+    .post(`${baseUrl}/register`, formData, { headers: headers })
     .then(function (response) {
       console.log(response.data);
       localStorage.setItem("token", response.data.token);
@@ -120,6 +126,30 @@ function getTags(tags) {
   }
   // console.log(tagsHtml);
   return tagsHtml;
+}
+
+function publishPost(postTitle, postDescription, postImg, onFinish) {
+  const token = localStorage.getItem("token");
+  let formData = new FormData();
+  formData.append("title", postTitle);
+  formData.append("body", postDescription);
+  formData.append("image", postImg);
+
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "multipart/form-data",
+  };
+  axios
+    .post(`${baseUrl}/posts`, formData, { headers: headers })
+    .then(function (response) {
+      console.log(response.data);
+      onFinish();
+      fetchPosts();
+    })
+    .catch(function (error) {
+      console.log(error.response.data.message);
+      // console.log(error.response);
+    });
 }
 
 fetchPosts();

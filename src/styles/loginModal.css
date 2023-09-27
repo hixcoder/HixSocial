@@ -77,3 +77,25 @@
 .signup-link {
   margin: 0 auto 1rem auto;
 }
+
+#register-img {
+  margin: 1rem auto;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 10rem;
+  border: solid 0.2rem var(--main-color);
+  border-style: dashed;
+  background-color: white;
+  padding: 2px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.134);
+}
+#register-img:hover {
+  box-shadow: 0 0 4px var(--main-color);
+  /* content: ; */
+}
+#register-img-input {
+  display: none;
+}
+.center {
+  margin: auto;
+}

@@ -45,6 +45,15 @@
         <span class="close">&times;</span>
         <h1>Register Now</h1>
         <form action="#">
+          <label class="center" for="register-img-input">
+            <img id="register-img" src="../assets/male.png" alt="" />
+            <input
+              id="register-img-input"
+              type="file"
+              required
+              accept="image/*"
+            />
+          </label>
           <input
             id="fullName-input-register"
             type="text"
@@ -115,42 +124,41 @@
       <!-- /NAV BAR -->
 
       <!-- POST CARD -->
-      <div id="posts-container">
-        <div id="create-post">
-          <div class="post-head">
-            <img
-              id="post-publisher-img"
-              src="${postList[i].authorImage}"
-              alt=""
-              onerror="this.onerror=null;this.src='../assets/male.png';"
-            />
-            <h3>${postList[i].author}</h3>
-          </div>
-
-          <form action="#">
-            <input
-              class="create-post-input"
-              id="create-post-title"
-              type="text"
-              placeholder="Enter title"
-              required
-            />
-
-            <textarea
-              class="create-post-input"
-              name=""
-              id="create-post-body"
-              cols="30"
-              rows="5"
-              placeholder="Enter description"
-            ></textarea>
-            <input id="create-post-img" type="file" required />
-            <div class="hix-align-right">
-              <button type="submit" onclick="">Publish</button>
-            </div>
-          </form>
+      <div id="create-post">
+        <div class="post-head">
+          <img
+            id="post-publisher-img"
+            src=""
+            alt=""
+            onerror="this.onerror=null;this.src='../assets/male.png';"
+          />
+          <h3 id="post-publisher-name">Your name</h3>
         </div>
+
+        <form action="#">
+          <input
+            class="create-post-input"
+            id="create-post-title"
+            type="text"
+            placeholder="Enter title"
+            required
+          />
+
+          <textarea
+            class="create-post-input"
+            name=""
+            id="create-post-body"
+            cols="30"
+            rows="6"
+            placeholder="Enter description"
+          ></textarea>
+          <input id="create-post-img" type="file" />
+          <div class="hix-align-right">
+            <button type="submit" onclick="publishBtnClicked()">Publish</button>
+          </div>
+        </form>
       </div>
+      <div id="posts-container"></div>
       <!-- /POST CARD -->
     </div>
     <script src="../../node_modules/axios/dist/axios.min.js"></script>
