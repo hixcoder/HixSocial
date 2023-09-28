@@ -55,7 +55,7 @@ class Post {
                 </div>
                
                 <div class="send-comment" >
-                  <form action="#">
+                  <form action="javascript:void()">
                     <input id="sendCommentInput-${
                       this.id
                     }" class="sendCommentInput" type="text" placeholder="Enter Comment">
