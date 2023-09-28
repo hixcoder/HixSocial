@@ -7,19 +7,20 @@ async function fetchPosts(reload = true, page = 1) {
     axios
       .get(`${baseUrl}/posts?limit=6&page=${page}`)
       .then((response) => {
-        let allPosts = response.data.data;
+        let allComments = response.data.data;
         var i = 0;
         var postList = [];
         // console.log(response.data.meta.last_page);
         lastPage = response.data.meta.last_page;
         if (reload) {
-          // document.getElementById("posts-container").innerHTML = "";
+          document.getElementById("posts-container").innerHTML = "";
         }
-        for (post of allPosts) {
+        for (post of allComments) {
           // console.log(post);
           postList.push(new Post(post));
+          var tmp = new Post(post);
           document.getElementById("posts-container").innerHTML +=
-            postList[i].PostCard();
+            tmp.PostCard();
           i++;
         }
         resolve();
@@ -31,6 +32,35 @@ async function fetchPosts(reload = true, page = 1) {
   });
 }
 
+// this function for fetch comments
+async function fetchComments(postId) {
+  await new Promise((resolve, reject) => {
+    axios
+      .get(`${baseUrl}/posts/${postId}`)
+      .then((response) => {
+        let allComments = response.data.data.comments;
+        console.log(allComments);
+        document.getElementById(`all-comments-${postId}`).innerHTML = "";
+        for (comment of allComments) {
+          console.log(comment);
+          document.getElementById(`all-comments-${postId}`).innerHTML += `
+             <div class="users-comment">
+                  <img class="users-comment-img " src="${comment.author.profile_image}" alt="" onerror="this.onerror=null;this.src='../assets/male.png';"/>
+                  <div class="users-comment-info">
+                    <h3>${comment.author.name}</h3>
+                    <p>${comment.body}</p>
+                  </div>
+                </div>
+            `;
+        }
+        resolve();
+      })
+      .catch((error) => {
+        alert(error);
+        console.log(error);
+      });
+  });
+}
 // this function for login
 function login(userName, password, onFinish) {
   params = {

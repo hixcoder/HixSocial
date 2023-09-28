@@ -200,7 +200,7 @@ function debounce(func, wait) {
     }, wait);
   };
 }
-let currentPage = 1;
+let currentPage = 2;
 let lastPage = 1; // this var is getting his value in the fetchPosts() function
 window.addEventListener(
   "scroll",
@@ -221,24 +221,54 @@ window.addEventListener(
 // ================ /Infinite Scroll ================
 
 // ================ CommentBtn ================
-let isCommentClicked = false;
-function commentBtnClicked(userId) {
-  console.log("userid: " + userId);
-  const commentBtn = document.getElementById("comment-btn");
-  const commentSection = document.getElementById("comments-section");
+let isCommentClicked = {}; // Use an object to track each comment separately
 
-  isCommentClicked = isCommentClicked ? false : true;
-  console.log("isCommentClicked: " + isCommentClicked);
-  if (isCommentClicked) {
+// this function for show comment section
+function commentBtnClicked(postId) {
+  console.log("postId: " + postId);
+  const commentBtn = document.getElementById(`comment-btn-${postId}`);
+  const commentSection = document.getElementById(`comments-section-${postId}`);
+
+  if (!isCommentClicked[postId]) {
+    // Comment section is currently hidden
+    isCommentClicked[postId] = true;
+    console.log("isCommentClicked: " + isCommentClicked[postId]);
+
+    fetchComments(postId);
     commentSection.style.display = "block";
     commentBtn.style.backgroundColor = "var(--bg-color)";
   } else {
+    // Comment section is currently visible
+    isCommentClicked[postId] = false;
+    console.log("isCommentClicked: " + isCommentClicked[postId]);
+
     commentSection.style.display = "none";
     commentBtn.style.backgroundColor = "transparent";
   }
-  // commentSection.innerHTML += `
+}
 
-  //   `;
+// this function for send new comment
+function commentBtnClicked(postId) {
+  console.log("postId: " + postId);
+  const commentBtn = document.getElementById(`comment-btn-${postId}`);
+  const commentSection = document.getElementById(`comments-section-${postId}`);
+
+  if (!isCommentClicked[postId]) {
+    // Comment section is currently hidden
+    isCommentClicked[postId] = true;
+    console.log("isCommentClicked: " + isCommentClicked[postId]);
+
+    fetchComments(postId);
+    commentSection.style.display = "block";
+    commentBtn.style.backgroundColor = "var(--bg-color)";
+  } else {
+    // Comment section is currently visible
+    isCommentClicked[postId] = false;
+    console.log("isCommentClicked: " + isCommentClicked[postId]);
+
+    commentSection.style.display = "none";
+    commentBtn.style.backgroundColor = "transparent";
+  }
 }
 // ================ /CommentBtn ================
 
