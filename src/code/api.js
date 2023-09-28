@@ -32,35 +32,6 @@ async function fetchPosts(reload = true, page = 1) {
   });
 }
 
-// this function for fetch comments
-async function fetchComments(postId) {
-  await new Promise((resolve, reject) => {
-    axios
-      .get(`${baseUrl}/posts/${postId}`)
-      .then((response) => {
-        let allComments = response.data.data.comments;
-        console.log(allComments);
-        document.getElementById(`all-comments-${postId}`).innerHTML = "";
-        for (comment of allComments) {
-          console.log(comment);
-          document.getElementById(`all-comments-${postId}`).innerHTML += `
-             <div class="users-comment">
-                  <img class="users-comment-img " src="${comment.author.profile_image}" alt="" onerror="this.onerror=null;this.src='../assets/male.png';"/>
-                  <div class="users-comment-info">
-                    <h3>${comment.author.name}</h3>
-                    <p>${comment.body}</p>
-                  </div>
-                </div>
-            `;
-        }
-        resolve();
-      })
-      .catch((error) => {
-        alert(error);
-        console.log(error);
-      });
-  });
-}
 // this function for login
 function login(userName, password, onFinish) {
   params = {
@@ -144,6 +115,59 @@ function publishPost(postTitle, postDescription, postImg, onFinish) {
     .catch(function (error) {
       console.log(error.response.data.message);
       // console.log(error.response);
+    });
+}
+
+// this function for fetch comments
+async function fetchComments(postId) {
+  await new Promise((resolve, reject) => {
+    axios
+      .get(`${baseUrl}/posts/${postId}`)
+      .then((response) => {
+        let allComments = response.data.data.comments;
+        console.log(allComments.length);
+        document.getElementById(
+          `comment-count-${postId}`
+        ).innerHTML = `${allComments.length} Comments`;
+        document.getElementById(`all-comments-${postId}`).innerHTML = "";
+        for (comment of allComments) {
+          console.log(comment);
+          document.getElementById(`all-comments-${postId}`).innerHTML += `
+             <div class="users-comment">
+                  <img class="users-comment-img " src="${comment.author.profile_image}" alt="" onerror="this.onerror=null;this.src='../assets/male.png';"/>
+                  <div class="users-comment-info">
+                    <h3>${comment.author.name}</h3>
+                    <p>${comment.body}</p>
+                  </div>
+                </div>
+            `;
+        }
+        resolve();
+      })
+      .catch((error) => {
+        alert(error);
+        console.log(error);
+      });
+  });
+}
+
+function sendComment(postId, commentBody) {
+  const token = localStorage.getItem("token");
+
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+  params = {
+    body: commentBody,
+  };
+  axios
+    .post(`${baseUrl}/posts/${postId}/comments`, params, { headers: headers })
+    .then(function (response) {
+      console.log(response.data);
+      fetchComments(postId);
+    })
+    .catch(function (error) {
+      console.log(error.response.data.message);
     });
 }
 

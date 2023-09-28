@@ -46,7 +46,9 @@ class Post {
               </div>
               <!-- comments -->
               <div id="comments-section-${this.id}" class="comments-section">
-                <p id="comments-count">${this.commentCount} Comments</p>
+                <p id="comment-count-${this.id}" class="comments-count">${
+      this.commentCount
+    } Comments</p>
 
                 <div id="all-comments-${this.id}">
 
@@ -54,10 +56,14 @@ class Post {
                
                 <div class="send-comment" >
                   <form action="#">
-                    <input class="sendCommentInput" type="text" placeholder="Enter Comment">
-                    <button class="btnSendComment" onclick="sendCommentBtnClicked(${
+                    <input id="sendCommentInput-${
                       this.id
-                    })"  ><img src="../assets/send.png" alt=""></button>
+                    }" class="sendCommentInput" type="text" placeholder="Enter Comment">
+                    <button id="btnSendComment-${
+                      this.id
+                    }" class="btnSendComment" onclick="sendCommentBtnClicked(${
+      this.id
+    })"  ><img src="../assets/send.png" alt=""></button>
                   </form>
                 </div>
               </div>

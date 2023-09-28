@@ -210,9 +210,9 @@ window.addEventListener(
       document.documentElement.scrollHeight;
     // console.log("endOfPage: " + endOfPage);
     if (endOfPage && currentPage <= lastPage) {
-      console.log("endOfPage: " + endOfPage);
-      console.log("currentPage: " + currentPage);
-      console.log("lastPage: " + lastPage);
+      // console.log("endOfPage: " + endOfPage);
+      // console.log("currentPage: " + currentPage);
+      // console.log("lastPage: " + lastPage);
       fetchPosts(false, currentPage);
       currentPage++;
     }
@@ -225,14 +225,14 @@ let isCommentClicked = {}; // Use an object to track each comment separately
 
 // this function for show comment section
 function commentBtnClicked(postId) {
-  console.log("postId: " + postId);
+  // console.log("postId: " + postId);
   const commentBtn = document.getElementById(`comment-btn-${postId}`);
   const commentSection = document.getElementById(`comments-section-${postId}`);
 
   if (!isCommentClicked[postId]) {
     // Comment section is currently hidden
     isCommentClicked[postId] = true;
-    console.log("isCommentClicked: " + isCommentClicked[postId]);
+    // console.log("isCommentClicked: " + isCommentClicked[postId]);
 
     fetchComments(postId);
     commentSection.style.display = "block";
@@ -240,7 +240,7 @@ function commentBtnClicked(postId) {
   } else {
     // Comment section is currently visible
     isCommentClicked[postId] = false;
-    console.log("isCommentClicked: " + isCommentClicked[postId]);
+    // console.log("isCommentClicked: " + isCommentClicked[postId]);
 
     commentSection.style.display = "none";
     commentBtn.style.backgroundColor = "transparent";
@@ -248,27 +248,13 @@ function commentBtnClicked(postId) {
 }
 
 // this function for send new comment
-function commentBtnClicked(postId) {
+function sendCommentBtnClicked(postId) {
   console.log("postId: " + postId);
-  const commentBtn = document.getElementById(`comment-btn-${postId}`);
-  const commentSection = document.getElementById(`comments-section-${postId}`);
-
-  if (!isCommentClicked[postId]) {
-    // Comment section is currently hidden
-    isCommentClicked[postId] = true;
-    console.log("isCommentClicked: " + isCommentClicked[postId]);
-
-    fetchComments(postId);
-    commentSection.style.display = "block";
-    commentBtn.style.backgroundColor = "var(--bg-color)";
-  } else {
-    // Comment section is currently visible
-    isCommentClicked[postId] = false;
-    console.log("isCommentClicked: " + isCommentClicked[postId]);
-
-    commentSection.style.display = "none";
-    commentBtn.style.backgroundColor = "transparent";
-  }
+  // const commentBtn = document.getElementById(`btnSendComment-${postId}`);
+  const commentBody = document.getElementById(
+    `sendCommentInput-${postId}`
+  ).value;
+  sendComment(postId, commentBody);
 }
 // ================ /CommentBtn ================
 
