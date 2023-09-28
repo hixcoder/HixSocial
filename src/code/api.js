@@ -13,53 +13,13 @@ async function fetchPosts(reload = true, page = 1) {
         // console.log(response.data.meta.last_page);
         lastPage = response.data.meta.last_page;
         if (reload) {
-          document.getElementById("posts-container").innerHTML = "";
+          // document.getElementById("posts-container").innerHTML = "";
         }
         for (post of allPosts) {
           // console.log(post);
-          postList.push(
-            new Post(
-              post.author.name,
-              post.author.profile_image,
-              post.created_at,
-              post.title,
-              post.body,
-              post.image,
-              post.tags
-            )
-          );
-          document.getElementById("posts-container").innerHTML += `
-          <div class="post">
-            <div class="post-head">
-              <img id="post-publisher-img" src="${
-                postList[i].authorImage
-              }" alt="" onerror="this.onerror=null;this.src='../assets/male.png';"/>
-              <div class="post-head-info">
-                <h3>${postList[i].author}</h3>
-                <p>${postList[i].createdAt}</p>
-              </div>
-            </div>
-            <div class="post-body">
-              <h3>
-                ${postList[i].title}
-              </h3>
-              <h4>
-                ${postList[i].body}
-              </h4>
-              <img id="post-img" src="${postList[i].image}" alt="" />
-            </div>
-            <div class="post-footer">
-               <div class="tags">
-               ${getTags(postList[i].tags)}
-                </div>
-                <div class="comment">
-                    <i class="fa-regular fa-message"></i>
-                    <h4>comment</h4>
-              </div>
-            </div>
-            </div>
-          </div>
-         `;
+          postList.push(new Post(post));
+          document.getElementById("posts-container").innerHTML +=
+            postList[i].PostCard();
           i++;
         }
         resolve();

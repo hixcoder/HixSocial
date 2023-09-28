@@ -128,18 +128,6 @@ body {
   display: none;
 }
 
-/* -- Card Post -- */
-.post {
-  margin: 0 3rem;
-  cursor: pointer;
-  border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  margin-top: 2rem;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.134);
-}
-
 /* ========== Create post =========== */
 #create-post {
   margin: 0 3rem;
@@ -193,7 +181,20 @@ body {
 #create-post-body {
   resize: none;
 }
+
 /* ========== /Create post =========== */
+
+/* --------------- Card Post --------------- */
+.post {
+  margin: 0 3rem;
+  cursor: pointer;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin-top: 2rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.134);
+}
 
 .post:last-child {
   margin-bottom: 2rem;
@@ -258,15 +259,98 @@ body {
   border-radius: 0.8rem;
   font-weight: 600;
 }
-.comment {
+#comment-btn {
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: fit-content;
+  border-radius: 0.8rem;
+  padding: 0 1rem 0 0;
+  margin: 0.4rem 0;
 }
 
+#comment-btn:hover {
+  background-color: var(--bg-color);
+}
+#comment-btn h4 {
+  margin: 0.8rem 0;
+}
 .post-footer i {
   margin: 0.5rem 0.5rem 0.5rem 1rem;
 }
+
+#comments-section {
+  display: none;
+  border-top: solid 2px var(--bg-color);
+}
+#comments-count {
+  text-align: end;
+  font-size: 0.8rem;
+  padding: 0.4rem;
+}
+.users-comment {
+  display: flex;
+  flex-direction: row;
+}
+.users-comment-img {
+  margin: 1rem 1rem 0 0.4rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 10rem;
+}
+
+.users-comment-info {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.users-comment-info h3 {
+  font-size: 0.8rem;
+  margin: 0 0 0.4rem 0;
+  color: black;
+}
+.users-comment-info p {
+  font-size: 0.8rem;
+
+  margin: 0;
+  background-color: var(--bg-color);
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  border-top-left-radius: 0;
+  color: black;
+}
+
+#send-comment form {
+  display: flex;
+  flex-direction: row;
+  /* background-color: red; */
+  justify-content: space-between;
+  padding: 0.4rem 0.4rem 1.2rem 0;
+}
+#btnSendComment {
+  background-color: var(--main-color);
+  border: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.6rem;
+}
+#btnSendComment:hover {
+  background-color: var(--main-color-dark);
+}
+#btnSendComment img {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+#sendCommentInput {
+  padding: 0.2rem 0.8rem;
+  border-radius: 0.8rem;
+  border: none;
+  width: 100%;
+  margin: 0 0.6rem;
+  background-color: var(--bg-color);
+}
+
+/* --------------- /Card Post --------------- */
 
 /* <== RESPONSIVE ==> */
 @media (max-width: 55rem) {

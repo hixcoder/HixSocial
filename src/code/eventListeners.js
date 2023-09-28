@@ -186,22 +186,61 @@ function publishBtnClicked() {
 // ================ /Create Post ================
 
 // ================ Infinite Scroll ================
+function debounce(func, wait) {
+  let timeout;
 
+  return function () {
+    const context = this;
+    const args = arguments;
+
+    clearTimeout(timeout);
+
+    timeout = setTimeout(function () {
+      func.apply(context, args);
+    }, wait);
+  };
+}
 let currentPage = 1;
 let lastPage = 1; // this var is getting his value in the fetchPosts() function
-window.addEventListener("scroll", () => {
-  const endOfPage =
-    window.scrollY + window.innerHeight >=
-    document.documentElement.scrollHeight;
-  if (endOfPage && currentPage <= lastPage) {
+window.addEventListener(
+  "scroll",
+  debounce(() => {
+    const endOfPage =
+      window.scrollY + window.innerHeight >=
+      document.documentElement.scrollHeight;
     // console.log("endOfPage: " + endOfPage);
-    // console.log("currentPage: " + currentPage);
-    // console.log("lastPage: " + lastPage);
-    fetchPosts(false, currentPage);
-    currentPage++;
-  }
-});
+    if (endOfPage && currentPage <= lastPage) {
+      console.log("endOfPage: " + endOfPage);
+      console.log("currentPage: " + currentPage);
+      console.log("lastPage: " + lastPage);
+      fetchPosts(false, currentPage);
+      currentPage++;
+    }
+  }, 500)
+);
 // ================ /Infinite Scroll ================
+
+// ================ CommentBtn ================
+let isCommentClicked = false;
+function commentBtnClicked(userId) {
+  console.log("userid: " + userId);
+  const commentBtn = document.getElementById("comment-btn");
+  const commentSection = document.getElementById("comments-section");
+
+  isCommentClicked = isCommentClicked ? false : true;
+  console.log("isCommentClicked: " + isCommentClicked);
+  if (isCommentClicked) {
+    commentSection.style.display = "block";
+    commentBtn.style.backgroundColor = "var(--bg-color)";
+  } else {
+    commentSection.style.display = "none";
+    commentBtn.style.backgroundColor = "transparent";
+  }
+  // commentSection.innerHTML += `
+
+  //   `;
+}
+// ================ /CommentBtn ================
 
 drawer();
 handleResize();

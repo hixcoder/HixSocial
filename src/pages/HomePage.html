@@ -89,6 +89,7 @@
     <!-- /MODALS -->
 
     <div class="container">
+
       <!-- NAV BAR -->
       <div class="nav">
         <div class="nav-left">
@@ -123,7 +124,7 @@
       </div>
       <!-- /NAV BAR -->
 
-      <!-- POST CARD -->
+      <!-- CREATE POST CARD -->
       <div id="create-post">
         <div class="post-head">
           <img
@@ -158,9 +159,66 @@
           </div>
         </form>
       </div>
-      <div id="posts-container"></div>
+      <!-- /CREATE POST CARD -->
+
+      <!-- POST CARD -->
+      <div id="posts-container">
+        <div class="post">
+          <div class="post-head">
+            <img id="post-publisher-img" src="${
+              postList[i].authorImage
+            }" alt="" onerror="this.onerror=null;this.src='../assets/male.png';"/>
+            <div class="post-head-info">
+              <h3>author</h3>
+              <p>4 min ago</p>
+            </div>
+          </div>
+          <div class="post-body">
+            <h3>
+              hello
+            </h3>
+            <h4>
+             guys
+            </h4>
+            <img id="post-img" src="../assets/bg.png" alt="" />
+          </div>
+          <div class="post-footer">
+             <div class="tags">
+             
+              </div>
+              <div onclick="commentBtnClicked(1)" id="comment-btn" class="comment">
+                  <i class="fa-regular fa-message"></i>
+                  <h4>comment</h4>
+              </div>
+            <!-- comments -->
+            <div id="comments-section">
+              <p id="comments-count">50 Comments</p>
+              <div class="users-comment">
+                <img class="users-comment-img " src="${
+                  postList[i].authorImage
+                }" alt="" onerror="this.onerror=null;this.src='../assets/male.png';"/>
+                <div class="users-comment-info">
+                  <h3>author</h3>
+                  <p>this is my comment this is my comment this is my comment </p>
+                </div>
+              </div>
+              <div id="send-comment">
+                <form action="#">
+                  <input id="sendCommentInput" type="text" placeholder="Enter Comment">
+                  <button id="btnSendComment" ><img src="../assets/send.png" alt=""></button>
+                </form>
+              </div>
+            </div>
+            <!-- comments -->
+            
+
+          </div>
+          </div>
+        </div>
+      </div>
       <!-- /POST CARD -->
     </div>
+    
     <script src="../../node_modules/axios/dist/axios.min.js"></script>
     <script src="../code/api.js"></script>
     <script src="../code/eventListeners.js"></script>
