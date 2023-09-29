@@ -1,0 +1,44 @@
+.profile-info {
+  background-image: url(../assets/bg.png);
+  background-size: cover;
+  background-position: center center;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  margin: 2rem;
+  height: 20rem;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: end; */
+  position: relative;
+}
+
+.profile-info-img {
+  position: absolute;
+  z-index: 1;
+  bottom: 26%;
+  margin: 1rem 1rem 0 1rem;
+  width: 6rem;
+  border-radius: 10rem;
+}
+
+.profile-info-content {
+  height: 25%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--main-color-dark2);
+  border-radius: 0 0 1rem 1rem;
+  color: white;
+  padding: 1rem 0rem 0.4rem 2rem;
+}
+
+.profile-info-content h3 {
+  font-size: large;
+  margin-bottom: 0.2rem;
+}
+.profile-info-content h4 {
+  font-size: small;
+  font-weight: normal;
+  margin-top: 0;
+}

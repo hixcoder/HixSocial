@@ -113,8 +113,8 @@ function publishPost(postTitle, postDescription, postImg, onFinish) {
       fetchPosts();
     })
     .catch(function (error) {
-      console.log(error.response.data.message);
-      // console.log(error.response);
+      // console.log(error.response.data.message);
+      console.log(error.response);
     });
 }
 
@@ -171,4 +171,34 @@ function sendComment(postId, commentBody) {
     });
 }
 
-fetchPosts();
+async function fetchUserPosts(reload = true, page = 1) {
+  const userId = JSON.parse(localStorage.getItem("user")).id;
+  console.log(userId);
+
+  await new Promise((resolve, reject) => {
+    axios
+      .get(`${baseUrl}/users/${userId}/posts`)
+      .then((response) => {
+        let allComments = response.data.data;
+        console.log(allComments);
+        if (reload) {
+          document.getElementById("posts-container").innerHTML = "";
+        }
+        var tmpPost;
+        var tmpHtml;
+        for (post of allComments) {
+          // console.log(post);
+          tmpPost = new Post(post);
+          tmpHtml =
+            tmpPost.PostCard() +
+            document.getElementById("posts-container").innerHTML;
+          document.getElementById("posts-container").innerHTML = tmpHtml;
+        }
+        resolve();
+      })
+      .catch((error) => {
+        alert(error);
+        console.log(error);
+      });
+  });
+}

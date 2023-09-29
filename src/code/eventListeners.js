@@ -32,7 +32,7 @@ var btnLogin = document.getElementById("btn-login");
 var btnRegister = document.getElementById("btn-register");
 var spanLogin = document.getElementsByClassName("close")[0];
 var spanRegister = document.getElementsByClassName("close")[1];
-const input = document.getElementById("register-img-input");
+const regesterInputImg = document.getElementById("register-img-input");
 
 // When the user clicks on the button, open the modal
 btnLogin.onclick = function () {
@@ -83,7 +83,7 @@ function registerBtnClicked() {
 
 // for the register img preview
 const previewPhoto = () => {
-  const file = input.files;
+  const file = regesterInputImg.files;
   if (file) {
     const fileReader = new FileReader();
     const preview = document.getElementById("register-img");
@@ -200,6 +200,7 @@ function debounce(func, wait) {
     }, wait);
   };
 }
+
 let currentPage = 2;
 let lastPage = 1; // this var is getting his value in the fetchPosts() function
 window.addEventListener(
@@ -261,5 +262,5 @@ function sendCommentBtnClicked(postId) {
 drawer();
 handleResize();
 window.addEventListener("resize", handleResize);
-input.addEventListener("change", previewPhoto);
+regesterInputImg.addEventListener("change", previewPhoto);
 setupUI();

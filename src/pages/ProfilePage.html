@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/homePage.css" />
     <link rel="stylesheet" href="../styles/loginModal.css" />
+    <link rel="stylesheet" href="../styles/profilePage.css" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v6.0.0-beta1/css/all.css"
@@ -123,6 +124,21 @@
       </div>
       <!-- /NAV BAR -->
 
+      <!-- ProfileInfo -->
+      <div class="profile-info">
+        <img
+          class="profile-info-img"
+          src=""
+          alt=""
+          onerror="this.onerror=null;this.src='../assets/male.png';"
+        />
+        <div class="profile-info-content">
+          <h3 id="">Full name</h3>
+          <h4 id="">@Username</h4>
+        </div>
+      </div>
+      <!-- /ProfileInfo -->
+
       <!-- CREATE POST CARD -->
       <div id="create-post">
         <div class="post-head">
@@ -218,7 +234,7 @@
     <script src="../../node_modules/axios/dist/axios.min.js"></script>
     <script src="../code/api.js"></script>
     <script>
-      fetchPosts();
+      fetchUserPosts();
     </script>
     <script src="../code/eventListeners.js"></script>
     <script src="../models/Post.js"></script>
