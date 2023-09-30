@@ -21,10 +21,16 @@ body {
   width: 54rem;
   height: 100vw;
   margin: auto;
+  padding-top: 5rem;
 }
 
 /* <-- NAV --> */
 .nav {
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.134);
 
   background-color: white;
@@ -187,6 +193,7 @@ body {
 /* ========== /Create post =========== */
 
 /* --------------- Card Post --------------- */
+
 .post {
   margin: 0 3rem;
   cursor: pointer;

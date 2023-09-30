@@ -12,7 +12,7 @@
   position: relative;
 }
 
-.profile-info-img {
+#profile-info-img {
   position: absolute;
   z-index: 1;
   bottom: 26%;

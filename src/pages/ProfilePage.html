@@ -32,6 +32,7 @@
             placeholder="Your Password"
             required
           />
+          <p id="login-error-msg"></p>
           <button type="submit" onclick="loginBtnClicked()">login</button>
           <div class="signup-link">
             Not a member? <a href="#">Register now</a>
@@ -79,6 +80,8 @@
             placeholder="Enter Password"
             required
           />
+          <p id="register-error-msg"></p>
+
           <button type="submit" onclick="registerBtnClicked()">Register</button>
           <div class="signup-link">
             Already have an account? <a href="#">Login</a>
@@ -88,7 +91,6 @@
     </div>
     <!-- /REGISTER -->
     <!-- /MODALS -->
-
     <div class="container">
       <!-- NAV BAR -->
       <div class="nav">
@@ -127,14 +129,14 @@
       <!-- ProfileInfo -->
       <div class="profile-info">
         <img
-          class="profile-info-img"
+          id="profile-info-img"
           src=""
           alt=""
           onerror="this.onerror=null;this.src='../assets/male.png';"
         />
         <div class="profile-info-content">
-          <h3 id="">Full name</h3>
-          <h4 id="">@Username</h4>
+          <h3 id="profile-info-fullName">Full name</h3>
+          <h4 id="profile-info-userName">@Username</h4>
         </div>
       </div>
       <!-- /ProfileInfo -->
@@ -177,58 +179,7 @@
       <!-- /CREATE POST CARD -->
 
       <!-- POST CARD -->
-      <div id="posts-container">
-        <!-- <div class="post">
-          <div class="post-head">
-            <img id="post-publisher-img" src="${
-              postList[i].authorImage
-            }" alt="" onerror="this.onerror=null;this.src='../assets/male.png';"/>
-            <div class="post-head-info">
-              <h3>author</h3>
-              <p>4 min ago</p>
-            </div>
-          </div>
-          <div class="post-body">
-            <h3>
-              hello
-            </h3>
-            <h4>
-             guys
-            </h4>
-            <img id="post-img" src="../assets/bg.png" alt="" />
-          </div>
-          <div class="post-footer">
-             <div class="tags">
-             
-              </div>
-              <div onclick="commentBtnClicked(1)" id="comment-btn" class="comment">
-                  <i class="fa-regular fa-message"></i>
-                  <h4>comment</h4>
-              </div>
-            <div id="comments-section">
-              <p id="comments-count">50 Comments</p>
-              <div class="users-comment">
-                <img class="users-comment-img " src="${
-                  postList[i].authorImage
-                }" alt="" onerror="this.onerror=null;this.src='../assets/male.png';"/>
-                <div class="users-comment-info">
-                  <h3>author</h3>
-                  <p>this is my comment this is my comment this is my comment </p>
-                </div>
-              </div>
-              <div id="send-comment">
-                <form action="#">
-                  <input id="sendCommentInput" type="text" placeholder="Enter Comment">
-                  <button id="btnSendComment" ><img src="../assets/send.png" alt=""></button>
-                </form>
-              </div>
-            </div>
-            
-
-          </div>
-          </div>
-        </div> -->
-      </div>
+      <div id="posts-container"></div>
       <!-- /POST CARD -->
     </div>
     <script src="../../node_modules/axios/dist/axios.min.js"></script>

@@ -26,14 +26,13 @@ function drawer() {
 
 // ================ Modals ================
 // Get the modal
-var loginModal = document.getElementById("loginModal");
-var registerModal = document.getElementById("registerModal");
-var btnLogin = document.getElementById("btn-login");
-var btnRegister = document.getElementById("btn-register");
-var spanLogin = document.getElementsByClassName("close")[0];
-var spanRegister = document.getElementsByClassName("close")[1];
+const loginModal = document.getElementById("loginModal");
+const registerModal = document.getElementById("registerModal");
+const btnLogin = document.getElementById("btn-login");
+const btnRegister = document.getElementById("btn-register");
+const spanLogin = document.getElementsByClassName("close")[0];
+const spanRegister = document.getElementsByClassName("close")[1];
 const regesterInputImg = document.getElementById("register-img-input");
-
 // When the user clicks on the button, open the modal
 btnLogin.onclick = function () {
   loginModal.style.display = "block";
@@ -99,6 +98,7 @@ function logoutBtnClicked() {
   localStorage.setItem("token", "");
   localStorage.setItem("user", "");
   setupUI();
+  location.href = "HomePage.html";
 }
 // ================ /Modals ================
 
@@ -135,13 +135,20 @@ function handleResize() {
 
 // here we fill the image and name of user in the create post div
 function showUserInfo() {
+  const profileImg = document.getElementById("profile-info-img");
+  const profileFullName = document.getElementById("profile-info-fullName");
+  const profileUserName = document.getElementById("profile-info-userName");
   const publisherImg = document.getElementById("post-publisher-img");
   const publisherName = document.getElementById("post-publisher-name");
   const userData = JSON.parse(localStorage.getItem("user"));
+
   if (JSON.stringify(userData.profile_image) != "{}") {
     publisherImg.src = userData.profile_image;
+    profileImg.src = userData.profile_image;
   }
-
+  console.log(userData);
+  profileFullName.innerHTML = userData.name;
+  profileUserName.innerHTML = `@${userData.username}`;
   publisherName.innerHTML = userData.username;
   console.log(JSON.stringify(userData.profile_image));
 }
@@ -154,7 +161,7 @@ function setupUI() {
   const addPost = document.getElementById("create-post");
 
   // console.log("isLargeScreen: " + isLargeScreen);
-  if (token == "") {
+  if (token == "" || token == null) {
     // user is not login [guest]
     loginBtn.style.display = isLargeScreen ? "inline-block" : "block";
     registerBtn.style.display = isLargeScreen ? "inline-block" : "block";
@@ -226,6 +233,15 @@ let isCommentClicked = {}; // Use an object to track each comment separately
 
 // this function for show comment section
 function commentBtnClicked(postId) {
+  // here we show the login alert if the user is not login
+  const token = localStorage.getItem("token");
+  if (token == "" || token == null) {
+    console.log("token: " + token);
+
+    loginModal.style.display = "block";
+    return;
+  }
+
   // console.log("postId: " + postId);
   const commentBtn = document.getElementById(`comment-btn-${postId}`);
   const commentSection = document.getElementById(`comments-section-${postId}`);
@@ -256,6 +272,19 @@ function sendCommentBtnClicked(postId) {
     `sendCommentInput-${postId}`
   ).value;
   sendComment(postId, commentBody);
+}
+
+// check if the user login when click nav profile
+function navProfileClicked() {
+  const token = localStorage.getItem("token");
+  if (token == "" || token == null) {
+    console.log("token: " + token);
+
+    loginModal.style.display = "block";
+    return false;
+  } else {
+    return true;
+  }
 }
 // ================ /CommentBtn ================
 

@@ -48,7 +48,15 @@ function login(userName, password, onFinish) {
       onFinish();
     })
     .catch(function (error) {
-      console.log(error.response.data.message);
+      console.log(error);
+      if (error.response) {
+        // Handle the error with a response
+        const loginErrorMsg = document.getElementById("login-error-msg");
+        loginErrorMsg.innerHTML = error.response.data.message;
+      } else {
+        // Handle the error without a response
+        console.error("Network error or no response from the server.");
+      }
     });
 }
 
@@ -72,6 +80,8 @@ function register(fullName, userName, email, password, registerImg, onFinish) {
       onFinish();
     })
     .catch(function (error) {
+      const registerErrorMsg = document.getElementById("register-error-msg");
+      registerErrorMsg.innerHTML = error.response.data.message;
       console.log(error.response.data.message);
       // console.log(error.response);
     });

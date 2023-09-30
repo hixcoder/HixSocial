@@ -99,3 +99,8 @@
 .center {
   margin: auto;
 }
+#login-error-msg,
+#register-error-msg {
+  color: red;
+  font-size: 0.9rem;
+}
