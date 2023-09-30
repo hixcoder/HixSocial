@@ -135,21 +135,30 @@ function handleResize() {
 
 // here we fill the image and name of user in the create post div
 function showUserInfo() {
-  const profileImg = document.getElementById("profile-info-img");
-  const profileFullName = document.getElementById("profile-info-fullName");
-  const profileUserName = document.getElementById("profile-info-userName");
   const publisherImg = document.getElementById("post-publisher-img");
   const publisherName = document.getElementById("post-publisher-name");
   const userData = JSON.parse(localStorage.getItem("user"));
 
   if (JSON.stringify(userData.profile_image) != "{}") {
     publisherImg.src = userData.profile_image;
+  }
+  console.log(userData);
+  publisherName.innerHTML = userData.username;
+  console.log(JSON.stringify(userData.profile_image));
+}
+
+function showProfileInfo() {
+  const profileImg = document.getElementById("profile-info-img");
+  const profileFullName = document.getElementById("profile-info-fullName");
+  const profileUserName = document.getElementById("profile-info-userName");
+  const userData = JSON.parse(localStorage.getItem("user"));
+
+  if (JSON.stringify(userData.profile_image) != "{}") {
     profileImg.src = userData.profile_image;
   }
   console.log(userData);
   profileFullName.innerHTML = userData.name;
   profileUserName.innerHTML = `@${userData.username}`;
-  publisherName.innerHTML = userData.username;
   console.log(JSON.stringify(userData.profile_image));
 }
 
@@ -180,14 +189,26 @@ function setupUI() {
 
 // ================ Create Post ================
 // register button clicked
-function publishBtnClicked() {
+function publishBtnClicked(pageName) {
   const postTitle = document.getElementById("create-post-title").value;
   const postDescription = document.getElementById("create-post-body").value;
   const postImg = document.getElementById("create-post-img").files[0];
   // const publishBtn = document.getElementById("email-input-register").value;
-
+  console.log("pageName:" + pageName);
   publishPost(postTitle, postDescription, postImg, () => {
     setupUI();
+    if (pageName === "ProfilePage") {
+      fetchUserPosts();
+    } else {
+      fetchPosts();
+    }
+    // reset input fields
+    document.getElementById("create-post-title").value = "";
+    document.getElementById("create-post-body").value = "";
+    var emptyFile = document.createElement("input");
+    emptyFile.type = "file";
+    document.getElementById("create-post-img").files = emptyFile.files;
+    document.getElementById("create-post-img").value = "";
   });
 }
 // ================ /Create Post ================
@@ -271,7 +292,9 @@ function sendCommentBtnClicked(postId) {
   const commentBody = document.getElementById(
     `sendCommentInput-${postId}`
   ).value;
-  sendComment(postId, commentBody);
+  sendComment(postId, commentBody, () => {
+    document.getElementById(`sendCommentInput-${postId}`).value = "";
+  });
 }
 
 // check if the user login when click nav profile

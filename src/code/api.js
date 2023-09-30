@@ -120,7 +120,6 @@ function publishPost(postTitle, postDescription, postImg, onFinish) {
     .then(function (response) {
       console.log(response.data);
       onFinish();
-      fetchPosts();
     })
     .catch(function (error) {
       // console.log(error.response.data.message);
@@ -161,7 +160,7 @@ async function fetchComments(postId) {
   });
 }
 
-function sendComment(postId, commentBody) {
+function sendComment(postId, commentBody, onFinish) {
   const token = localStorage.getItem("token");
 
   const headers = {
@@ -175,6 +174,7 @@ function sendComment(postId, commentBody) {
     .then(function (response) {
       console.log(response.data);
       fetchComments(postId);
+      onFinish();
     })
     .catch(function (error) {
       console.log(error.response.data.message);

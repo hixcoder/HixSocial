@@ -19,7 +19,7 @@
       <div class="modal-content">
         <span class="close">&times;</span>
         <h1>Login Now</h1>
-        <form action="#">
+        <form action="javascript:void()">
           <input
             id="userName-input"
             type="text"
@@ -46,7 +46,7 @@
       <div class="modal-content">
         <span class="close">&times;</span>
         <h1>Register Now</h1>
-        <form action="#">
+        <form action="javascript:void()">
           <label class="center" for="register-img-input">
             <img id="register-img" src="../assets/male.png" alt="" />
             <input
@@ -153,7 +153,7 @@
           <h3 id="post-publisher-name">Your name</h3>
         </div>
 
-        <form action="#">
+        <form action="javascript:void()">
           <input
             class="create-post-input"
             id="create-post-title"
@@ -172,7 +172,9 @@
           ></textarea>
           <input id="create-post-img" type="file" />
           <div class="hix-align-right">
-            <button type="submit" onclick="publishBtnClicked()">Publish</button>
+            <button type="submit" onclick="publishBtnClicked('ProfilePage')">
+              Publish
+            </button>
           </div>
         </form>
       </div>
@@ -184,10 +186,11 @@
     </div>
     <script src="../../node_modules/axios/dist/axios.min.js"></script>
     <script src="../code/api.js"></script>
+    <script src="../code/eventListeners.js"></script>
     <script>
+      showProfileInfo();
       fetchUserPosts();
     </script>
-    <script src="../code/eventListeners.js"></script>
     <script src="../models/Post.js"></script>
   </body>
 </html>

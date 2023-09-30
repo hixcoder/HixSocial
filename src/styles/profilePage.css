@@ -1,5 +1,5 @@
 .profile-info {
-  background-image: url(../assets/bg.png);
+  background-image: url(../assets/cover.jpg);
   background-size: cover;
   background-position: center center;
   border-radius: 1rem;
@@ -29,11 +29,11 @@
   right: 0;
   background-color: var(--main-color-dark2);
   border-radius: 0 0 1rem 1rem;
-  color: white;
   padding: 1rem 0rem 0.4rem 2rem;
 }
 
 .profile-info-content h3 {
+  color: white;
   font-size: large;
   margin-bottom: 0.2rem;
 }
@@ -41,4 +41,5 @@
   font-size: small;
   font-weight: normal;
   margin-top: 0;
+  color: rgba(255, 255, 255, 0.845);
 }
