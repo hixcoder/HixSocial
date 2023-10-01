@@ -5,7 +5,7 @@ HixSocial is a dynamic web application that simulates a social media platform wh
 ## Table of Contents
 
 - [Features](#features)
-- [Screenshots](#screenshots)
+- [Video Demo](#video-demo)
 - [Installation](#installation)
 - [Resources](#resources)
 - [Contributing](#contributing)
@@ -18,25 +18,8 @@ HixSocial is a dynamic web application that simulates a social media platform wh
 - **User Profiles**: View your profile to see your posts and activities.
 - **API Integration**: Utilizes Axios library to fetch and display data from a backend API.
 
-## Screenshots
-<div align="center">
-  <img src="github-assets/a1.png" width="200">
-  <img src="github-assets/a2.png" width="200">
-  <img src="github-assets/a3.png" width="200">
-</div>
-
-<div align="center">
-  <img src="github-assets/a4.png" width="200">
-  <img src="github-assets/a5.png" width="200">
-  <img src="github-assets/a6.png" width="200">
-</div>
-
-<div align="center">
-  <img src="github-assets/a7.png" width="200">
-  <img src="github-assets/a8.png" width="200">
-  <img src="github-assets/a9.png" width="200">
-</div>
-
+## Video Demo
+https://github.com/hixcoder/HixSocial/assets/93520723/acfd6029-1aee-41a8-93e4-5a730e0d8ade
 
 ## Installation
 - Clone this repository: `git clone https://github.com/hixcoder/HixSocial`
