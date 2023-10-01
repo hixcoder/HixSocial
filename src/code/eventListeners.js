@@ -3,21 +3,20 @@
 function drawer() {
   const drawerCheckbox = document.getElementById("drawer");
   const drawerIcon = document.getElementById("drawer-icon");
-  const nav = document.getElementsByClassName("nav");
   const navlink = document.getElementsByClassName("navlink");
 
   drawerCheckbox.addEventListener("change", () => {
     drawerIcon.style.transition = "0.5s";
     for (let i = 0; i < navlink.length; i++) {
       if (drawerCheckbox.checked) {
-        navlink[i].style.marginTop = "-100%";
-        drawerIcon.className = "fa-solid fa-bars";
-        // nav[0].style.height = "0";
-      } else {
         // nav[0].style.height = "100vh";
         navlink[i].style.marginTop = "0";
         navlink[i].style.transition = "0.5s";
         drawerIcon.className = "fa-solid fa-x";
+        // nav[0].style.height = "0";
+      } else {
+        navlink[i].style.marginTop = "-100%";
+        drawerIcon.className = "fa-solid fa-bars";
       }
     }
   });
@@ -249,9 +248,9 @@ window.addEventListener(
       document.documentElement.scrollHeight;
     // console.log("endOfPage: " + endOfPage);
     if (endOfPage && currentPage <= lastPage) {
-      // console.log("endOfPage: " + endOfPage);
-      // console.log("currentPage: " + currentPage);
-      // console.log("lastPage: " + lastPage);
+      console.log("endOfPage: " + endOfPage);
+      console.log("currentPage: " + currentPage);
+      console.log("lastPage: " + lastPage);
       fetchPosts(false, currentPage);
       currentPage++;
     }
@@ -324,9 +323,9 @@ function navProfileClicked() {
 // ================ Loader ================
 function showLoader(isLoaderOn) {
   if (isLoaderOn) {
-    // document.getElementById("myLoader").style.display = "block";
+    document.getElementById("myLoader").style.display = "block";
   } else {
-    // document.getElementById("myLoader").style.display = "none";
+    document.getElementById("myLoader").style.display = "none";
   }
 }
 // ================ /Loader ================

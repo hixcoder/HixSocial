@@ -7,8 +7,6 @@ function fetchPosts(reload = true, page = 1) {
   axios
     .get(`${baseUrl}/posts?limit=6&page=${page}`)
     .then((response) => {
-      showLoader(false);
-
       let allComments = response.data.data;
       var i = 0;
       var postList = [];
@@ -17,6 +15,8 @@ function fetchPosts(reload = true, page = 1) {
       if (reload) {
         document.getElementById("posts-container").innerHTML = "";
       }
+      showLoader(false);
+
       for (post of allComments) {
         // console.log(post);
         postList.push(new Post(post));
@@ -28,7 +28,6 @@ function fetchPosts(reload = true, page = 1) {
     })
     .catch((error) => {
       showLoader(false);
-      alert(error);
       console.log(error);
     });
 }
