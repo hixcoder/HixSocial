@@ -97,7 +97,7 @@ function logoutBtnClicked() {
   localStorage.setItem("token", "");
   localStorage.setItem("user", "");
   setupUI();
-  location.href = "index.html";
+  location.href = "HomePage.html";
 }
 
 function goToRegister() {
