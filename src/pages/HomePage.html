@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/homePage.css" />
-    <link rel="stylesheet" href="../styles/loginModal.css" />
+    <link rel="stylesheet" href="../styles/modals.css" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v6.0.0-beta1/css/all.css"
@@ -34,7 +34,7 @@
           <p id="login-error-msg"></p>
           <button type="submit" onclick="loginBtnClicked()">login</button>
           <div class="signup-link">
-            Not a member? <a href="#">Register now</a>
+            Not a member? <a onclick="goToRegister()">Register now</a>
           </div>
         </form>
       </div>
@@ -83,7 +83,7 @@
 
           <button type="submit" onclick="registerBtnClicked()">Register</button>
           <div class="signup-link">
-            Already have an account? <a href="#">Login</a>
+            Already have an account? <a onclick="goToLogin()" href="#">Login</a>
           </div>
         </form>
       </div>

@@ -100,6 +100,16 @@ function logoutBtnClicked() {
   setupUI();
   location.href = "HomePage.html";
 }
+
+function goToRegister() {
+  loginModal.style.display = "none";
+  registerModal.style.display = "block";
+}
+
+function goToLogin() {
+  registerModal.style.display = "none";
+  loginModal.style.display = "block";
+}
 // ================ /Modals ================
 
 // ================ SETUP UI ================

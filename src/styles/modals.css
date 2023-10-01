@@ -2,7 +2,7 @@
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 88; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -58,6 +58,7 @@
   margin: 0 0 1rem 0;
   text-decoration: none;
   color: var(--main-color);
+  cursor: pointer;
 }
 
 .modal-content form button {
