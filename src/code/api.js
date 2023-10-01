@@ -2,34 +2,35 @@ const baseUrl = "https://tarmeezacademy.com/api/v1";
 
 // this function for fetch all posts
 
-async function fetchPosts(reload = true, page = 1) {
-  await new Promise((resolve, reject) => {
-    axios
-      .get(`${baseUrl}/posts?limit=6&page=${page}`)
-      .then((response) => {
-        let allComments = response.data.data;
-        var i = 0;
-        var postList = [];
-        // console.log(response.data.meta.last_page);
-        lastPage = response.data.meta.last_page;
-        if (reload) {
-          document.getElementById("posts-container").innerHTML = "";
-        }
-        for (post of allComments) {
-          // console.log(post);
-          postList.push(new Post(post));
-          var tmp = new Post(post);
-          document.getElementById("posts-container").innerHTML +=
-            tmp.PostCard();
-          i++;
-        }
-        resolve();
-      })
-      .catch((error) => {
-        alert(error);
-        console.log(error);
-      });
-  });
+function fetchPosts(reload = true, page = 1) {
+  showLoader(true);
+  axios
+    .get(`${baseUrl}/posts?limit=6&page=${page}`)
+    .then((response) => {
+      showLoader(false);
+
+      let allComments = response.data.data;
+      var i = 0;
+      var postList = [];
+      // console.log(response.data.meta.last_page);
+      lastPage = response.data.meta.last_page;
+      if (reload) {
+        document.getElementById("posts-container").innerHTML = "";
+      }
+      for (post of allComments) {
+        // console.log(post);
+        postList.push(new Post(post));
+        var tmp = new Post(post);
+        document.getElementById("posts-container").innerHTML += tmp.PostCard();
+        i++;
+      }
+      // resolve();
+    })
+    .catch((error) => {
+      showLoader(false);
+      alert(error);
+      console.log(error);
+    });
 }
 
 // this function for login

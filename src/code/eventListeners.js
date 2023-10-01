@@ -321,6 +321,16 @@ function navProfileClicked() {
 }
 // ================ /CommentBtn ================
 
+// ================ Loader ================
+function showLoader(isLoaderOn) {
+  if (isLoaderOn) {
+    // document.getElementById("myLoader").style.display = "block";
+  } else {
+    // document.getElementById("myLoader").style.display = "none";
+  }
+}
+// ================ /Loader ================
+
 drawer();
 handleResize();
 window.addEventListener("resize", handleResize);

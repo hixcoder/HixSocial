@@ -18,6 +18,9 @@ body {
 }
 
 .container {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
   transition: 0.3s;
   width: 54rem;
   height: 100vw;
@@ -194,7 +197,9 @@ body {
 /* ========== /Create post =========== */
 
 /* --------------- Card Post --------------- */
-
+#posts-container {
+  padding-bottom: 1rem;
+}
 .post {
   margin: 0 3rem;
   cursor: pointer;
@@ -207,7 +212,7 @@ body {
 }
 
 .post:last-child {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .post-head {
@@ -407,5 +412,48 @@ body {
     width: fit-content;
     margin-top: -100%;
     font-size: 1.1rem;
+  }
+}
+
+/* ===================================== External Styles =====================================*/
+
+#myLoader {
+  /* margin: 1rem 0;
+  margin: auto; */
+  /* padding: auto; */
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 4px solid black;
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border-left: 4px solid var(--main-color);
+  border-bottom: 4px solid transparent;
+  animation: rotation 0.5s linear infinite reverse;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
