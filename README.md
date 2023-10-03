@@ -3,7 +3,6 @@
 HixSocial is a dynamic web application that simulates a social media platform where users can create posts, share content, and engage with others through comments. Built using HTML, CSS, and JavaScript, HixSocial focuses on the frontend experience and provides a user-friendly interface for connecting with friends and sharing your thoughts.
 
 ## Table of Contents
-
 - [Features](#features)
 - [Video Demo](#video-demo)
 - [Installation](#installation)
