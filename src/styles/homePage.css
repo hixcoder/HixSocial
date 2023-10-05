@@ -13,14 +13,10 @@ body {
   background-color: var(--bg-color);
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
-  /* background-image: url(https://img.freepik.com/free-vector/hand-drawn-international-cat-day-background_23-2149487429.jpg?w=1800&t=st=1695972910~exp=1695973510~hmac=84edfe27c8c7885e45a5110c2a2bdce7249ca0ca4f3599dbfebf6400eb841de7); */
-  /* background-repeat: repeat; */
 }
 
 .container {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
+  
   transition: 0.3s;
   width: 54rem;
   height: 100vw;
