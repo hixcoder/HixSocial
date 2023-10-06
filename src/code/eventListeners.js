@@ -9,11 +9,9 @@ function drawer() {
     drawerIcon.style.transition = "0.5s";
     for (let i = 0; i < navlink.length; i++) {
       if (drawerCheckbox.checked) {
-        // nav[0].style.height = "100vh";
         navlink[i].style.marginTop = "0";
         navlink[i].style.transition = "0.5s";
         drawerIcon.className = "fa-solid fa-x";
-        // nav[0].style.height = "0";
       } else {
         navlink[i].style.marginTop = "-100%";
         drawerIcon.className = "fa-solid fa-bars";
